@@ -27,10 +27,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByNameContaining(String name);
 
     //… where x.firstname like ?1
-    List<User> findByNameLike(String name);
+    List<User> findByName(String name);
 
     //… where x.name = ?1 and x.email = ?2
-    Optional<User> findUsersByNameAndAndEmail(String name, String email);
+    Optional<User> findUsersByEmailAndName(String email, String name);
 
     //… where x.name = ?1 or x.email = ?2
     Optional<User> findUsersByNameOrAndEmail(String name, String email);
