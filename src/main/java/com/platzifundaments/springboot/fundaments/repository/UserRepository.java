@@ -32,8 +32,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
     //… where x.name = ?1 and x.email = ?2
     Optional<User> findUsersByEmailAndName(String email, String name);
 
+    List<User> findByNameLike(String name);
+
     //… where x.name = ?1 or x.email = ?2
-    Optional<User> findUsersByNameOrAndEmail(String name, String email);
+    Optional<User> findByNameOrEmail(String name, String email);
 
     //… where x.birthDate between ?1 and ?2
     List<User> findByBirthDateBetween(LocalDate begin, LocalDate end);
@@ -46,7 +48,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     //Using Named Parameters
     @Query("select u from User u where u.name = :name or u.email = :email")
-    Optional<User> findByNameOrEmail(@Param("name") String name,
+    Optional<User> findUByNameOrEmail(@Param("name") String name,
                                      @Param("email") String email);
 
 
