@@ -55,7 +55,7 @@ public class FundamentsApplication implements CommandLineRunner {
 		getInformationJpqlFromUser();
 	}
 	private void getInformationJpqlFromUser(){
-		LOGGER.info("User with method findByUserEmail" + userRepository.findByUserEmail("notexists@domain.com")
+		LOGGER.info("User with method findByUserEmail" + userRepository.findByUserEmail("julie@domain.com")
 		.orElseThrow(() -> new RuntimeException("Couldn't find the user")));
 
 		userRepository.findByAndSort("test", Sort.by("id").descending())
