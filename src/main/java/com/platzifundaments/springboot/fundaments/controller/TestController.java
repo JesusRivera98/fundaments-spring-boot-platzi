@@ -12,7 +12,7 @@ public class TestController {
     @RequestMapping
     @ResponseBody
     public ResponseEntity<String> function(){
-        return new ResponseEntity<>("Hello from controller a change", HttpStatus.OK);
+        return new ResponseEntity<>("Hello from controller a change another change", HttpStatus.OK);
     }
 
 }
