@@ -1,5 +1,6 @@
 package com.platzifundaments.springboot.fundaments.repository;
 
+import com.platzifundaments.springboot.fundaments.dto.UserDto;
 import com.platzifundaments.springboot.fundaments.entity.User;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -45,6 +46,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     //… where x.age = ?1 order by x.lastname desc
     List<User> findByNameContainingOrderByIdDesc(String name);
+
+    @Query("SELECT new com.platzifundaments.springboot.fundaments.dto.UserDto(u.id, u.name, u.birthDate)" +
+            " FROM User u " +
+            " WHERE u.birthDate=:paramDate" +
+            " AND u.email=:paramEmail")
+    Optional<UserDto> getAllByBirthDateAndEmail(@Param("paramDate") LocalDate date,
+                                                @Param("paramEmail") String email);
 
     //Using Named Parameters
     @Query("select u from User u where u.name = :name or u.email = :email")
