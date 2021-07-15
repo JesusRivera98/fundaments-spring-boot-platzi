@@ -54,9 +54,9 @@ public class FundamentsApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		//previousExamples();
-		//saveUsersInDataBase();
+		saveUsersInDataBase();
 		//getInformationJpqlFromUser();
-		saveWithErrorTransactional();
+		//saveWithErrorTransactional();
 	}
 
 	private void saveWithErrorTransactional(){
