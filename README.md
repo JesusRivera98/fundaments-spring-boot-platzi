@@ -70,6 +70,8 @@ An Annotation is a way of adding metadata to Java source code that is available 
 
 On the other hand, it is not strictly necessary that you comply with placing a specific notation, but it is good practice.
 
+@Transactional: Rollback the transactions that we are carrying out at the database level
+
 ### Logs
 |Error|Info|Debug|Others|
 |-----|----|-----|------|
