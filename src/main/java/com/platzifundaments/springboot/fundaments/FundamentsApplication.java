@@ -54,21 +54,25 @@ public class FundamentsApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		//previousExamples();
-		saveUsersInDataBase();
-		getInformationJpqlFromUser();
+		//saveUsersInDataBase();
+		//getInformationJpqlFromUser();
 		saveWithErrorTransactional();
 	}
 
 	private void saveWithErrorTransactional(){
 		User test1 = new User("test1Transactional","test1Transactional@domain.com", LocalDate.now());
 		User test2 = new User("test2Transactional","test2Transactional@domain.com", LocalDate.now());
-		User test3 = new User("test3Transactional","test3Transactional@domain.com", LocalDate.now());
+		User test3 = new User("test3Transactional","test1Transactional@domain.com", LocalDate.now());
 		User test4 = new User("test4Transactional","test4Transactional@domain.com", LocalDate.now());
 
 		List<User> users = Arrays.asList(test1, test2, test3, test4);
 
-		userService.saveTransactional(users);
 
+		try {
+			userService.saveTransactional(users);
+		}catch (Exception e){
+			LOGGER.error("This is an exception inside the transactional method");
+		}
 		userService.getAllUsers()
 				.stream()
 				.forEach(user ->
