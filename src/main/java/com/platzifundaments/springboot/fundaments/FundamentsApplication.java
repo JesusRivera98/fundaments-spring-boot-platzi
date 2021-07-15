@@ -76,7 +76,7 @@ public class FundamentsApplication implements CommandLineRunner {
 		userService.getAllUsers()
 				.stream()
 				.forEach(user ->
-						LOGGER.info("This us the user inside the transactional method" + user));
+						LOGGER.info("This is the user inside the transactional method" + user));
 	}
 
 	private void getInformationJpqlFromUser(){

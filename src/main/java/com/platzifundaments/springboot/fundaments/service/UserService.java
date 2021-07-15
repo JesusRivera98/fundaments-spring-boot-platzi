@@ -19,7 +19,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    @Transactional
+    //@Transactional
     public void  saveTransactional(List<User> users){
         users.stream()
                 .peek(user ->  LOG.info("Inserted user: " + user))
